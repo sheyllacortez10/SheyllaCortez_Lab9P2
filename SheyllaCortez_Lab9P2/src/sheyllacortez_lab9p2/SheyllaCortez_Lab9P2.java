@@ -4,6 +4,19 @@
  */
 package sheyllacortez_lab9p2;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JProgressBar;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author DELL
@@ -15,7 +28,7 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
      */
     public SheyllaCortez_Lab9P2() {
         initComponents();
-        adminDia midia = new adminDia(label_fecha,label_hora);
+        adminDia midia = new adminDia(label_fecha, label_hora);
         midia.start();
     }
 
@@ -28,8 +41,8 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel_neutro = new javax.swing.JPanel();
+        jPanel_purpura = new javax.swing.JPanel();
         jLabel_bienvenido = new javax.swing.JLabel();
         jLabel_titulofecha = new javax.swing.JLabel();
         label_fecha = new javax.swing.JLabel();
@@ -46,10 +59,10 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_neutro.setBackground(new java.awt.Color(0, 51, 255));
+        jPanel_neutro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 102, 204));
+        jPanel_purpura.setBackground(new java.awt.Color(255, 102, 204));
 
         jLabel_bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_bienvenido.setForeground(new java.awt.Color(0, 0, 0));
@@ -69,13 +82,13 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
         label_hora.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         label_hora.setForeground(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_purpuraLayout = new javax.swing.GroupLayout(jPanel_purpura);
+        jPanel_purpura.setLayout(jPanel_purpuraLayout);
+        jPanel_purpuraLayout.setHorizontalGroup(
+            jPanel_purpuraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_purpuraLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel_purpuraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label_hora, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                     .addComponent(jLabel_titulohora)
                     .addComponent(label_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -83,9 +96,9 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
                     .addComponent(jLabel_bienvenido))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel_purpuraLayout.setVerticalGroup(
+            jPanel_purpuraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_purpuraLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel_bienvenido)
                 .addGap(18, 18, 18)
@@ -118,17 +131,22 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea_miarchivo);
 
         bt_guardar.setText("Guardar");
+        bt_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_guardarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_purpura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel_neutro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(222, 222, 222))
@@ -151,7 +169,7 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel_purpura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -159,7 +177,7 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel_titulo)
                         .addGap(48, 48, 48)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel_neutro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel_titulosubir)
                 .addGap(18, 18, 18)
@@ -178,13 +196,45 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
 
     private void boton_subirArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_subirArchivoMouseClicked
         //mibarra
+        File archivo = null;
+        FileReader fr;
+        BufferedReader br;
         boolean terminar = true;
         adminProgress mibarra = new adminProgress(jProgressBar_Llenar, terminar);
-        mibarra.start();
-        if (mibarra.isSigue() == false) {
-            
+        archivo = chooseTXT(mibarra);
+
+        try {
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            String escribir = "";
+            if (!mibarra.isSigue()) {
+                while ((escribir = br.readLine()) != null) {
+                    jTextArea_miarchivo.append(escribir + "\n");
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SheyllaCortez_Lab9P2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SheyllaCortez_Lab9P2.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
     }//GEN-LAST:event_boton_subirArchivoMouseClicked
+
+    private void bt_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardarMouseClicked
+
+        FileWriter fw;
+        BufferedWriter bw;
+        try {
+            fw = new FileWriter(archivo1);
+            bw = new BufferedWriter(fw);
+            String nuevaInfo = jTextArea_miarchivo.getText();
+            bw.write(nuevaInfo);
+            bw.flush();
+        } catch (IOException ex) {
+            Logger.getLogger(SheyllaCortez_Lab9P2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bt_guardarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -230,12 +280,31 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_titulofecha;
     private javax.swing.JLabel jLabel_titulohora;
     private javax.swing.JLabel jLabel_titulosubir;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel_neutro;
+    private javax.swing.JPanel jPanel_purpura;
     private javax.swing.JProgressBar jProgressBar_Llenar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea_miarchivo;
     private javax.swing.JLabel label_fecha;
     private javax.swing.JLabel label_hora;
     // End of variables declaration//GEN-END:variables
+    File archivo1;
+
+    //metodo para seleccionar archivo
+    public File chooseTXT(adminProgress mibarra) {
+        JFileChooser agarrar = new JFileChooser();
+        FileNameExtensionFilter filtrotxt = new FileNameExtensionFilter("Files", "txt");
+        agarrar.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        agarrar.setFileFilter(filtrotxt);
+        int seleccionado = agarrar.showOpenDialog(this);
+
+        if (seleccionado == JFileChooser.APPROVE_OPTION) {
+            mibarra.run();
+            archivo1=agarrar.getSelectedFile();
+            return agarrar.getSelectedFile();
+        } else {
+            return null;
+        }
+    }
+
 }

@@ -15,6 +15,7 @@ public class adminProgress extends Thread{
     private boolean sigue;
 
 
+
     public adminProgress(JProgressBar prBar, boolean sigue) {
         this.prBar = prBar;
         this.sigue = sigue;
@@ -43,12 +44,13 @@ public class adminProgress extends Thread{
         while (sigue) {
                 prBar.setValue(prBar.getValue() + 1);
                 prBar.setString(Integer.toString(prBar.getValue()) + " mitiempo");
+                System.out.println(prBar.getValue());
                 if (prBar.getValue() == 100) {
                     sigue = false;
                 }
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (InterruptedException ex) {
             }
         }

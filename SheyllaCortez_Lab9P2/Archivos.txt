@@ -1,0 +1,59 @@
+Archivo:estructura de datos almacenada en el rom
+tiene una ruta o ubicación
+./ -> ubicación del programa que hace uso del archivo
+Archivos de texto -> cadenas de caracteres -> absoluta -> relativos
+Archivos binarios -> todos los demas archivos ->bytes
+
+Archivos tontos
+
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        Scanner sc = null;
+        try {
+            //1. instanciar
+            archivo = new File("c:/Archivos/Carta.txt");//ruta absoluta tipo a
+            archivo = new File("c:\\Archivos\\Carta.txt");//ruta absoluta tipo b - solo windows
+//            archivo = new File("./Files\\respuesta.txt");//formas relativas
+//            archivo = new File(".\\Files/respuesta.txt");
+            //2. leer
+            fr = new FileReader(archivo);
+            //capturar
+            br = new BufferedReader(fr);
+            
+            String linea = "";
+            
+            //si utilizo scanner, no uso reader ni buffered
+            //con sc
+            sc = new Scanner(archivo);
+            while (sc.hasNext()) {
+                String next = sc.nextLine();
+            }
+            
+            
+            //con buffered
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //se cierran al reves de como se instanciaron
+        sc.close();
+        br.close();
+        fr.close();
+        
+
+CRUD
+1.jerarquia de clase
+2.crear una clase admin de la ram y rom
+ram -> arraylist y rom -> file
+3. a la clase admin agregar dos metodso ma leer/escribir 
+4. enalgun app hacer crud usando la clase admin
+
+
+pregunta de examen: 
+1.jerarquia de clase
+2.crear una clase admin de la ram y rom
+ram -> arraylist y rom -> file
+3. parseo del parseo
