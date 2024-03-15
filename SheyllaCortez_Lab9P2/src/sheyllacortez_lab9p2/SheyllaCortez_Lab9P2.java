@@ -15,6 +15,8 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
      */
     public SheyllaCortez_Lab9P2() {
         initComponents();
+        adminDia midia = new adminDia(label_fecha,label_hora);
+        midia.start();
     }
 
     /**
@@ -28,6 +30,19 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel_bienvenido = new javax.swing.JLabel();
+        jLabel_titulofecha = new javax.swing.JLabel();
+        label_fecha = new javax.swing.JLabel();
+        jLabel_titulohora = new javax.swing.JLabel();
+        label_hora = new javax.swing.JLabel();
+        jLabel_titulo = new javax.swing.JLabel();
+        boton_subirArchivo = new javax.swing.JButton();
+        jLabel_titulosubir = new javax.swing.JLabel();
+        jProgressBar_Llenar = new javax.swing.JProgressBar();
+        jLabel_archivotitulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea_miarchivo = new javax.swing.JTextArea();
+        bt_guardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,16 +51,73 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 204));
 
+        jLabel_bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_bienvenido.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel_bienvenido.setText("Bienvenido");
+
+        jLabel_titulofecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_titulofecha.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel_titulofecha.setText("Fecha de hoy: ");
+
+        label_fecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        label_fecha.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel_titulohora.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_titulohora.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel_titulohora.setText("Hora actual:");
+
+        label_hora.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        label_hora.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 194, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label_hora, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(jLabel_titulohora)
+                    .addComponent(label_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_titulofecha)
+                    .addComponent(jLabel_bienvenido))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel_bienvenido)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_titulofecha)
+                .addGap(18, 18, 18)
+                .addComponent(label_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel_titulohora)
+                .addGap(18, 18, 18)
+                .addComponent(label_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel_titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_titulo.setText("Boroa Cloud ");
+
+        boton_subirArchivo.setText("Subir Archivo");
+        boton_subirArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_subirArchivoMouseClicked(evt);
+            }
+        });
+
+        jLabel_titulosubir.setText("Subiendo Archivo:");
+
+        jLabel_archivotitulo.setText("Archivo:");
+
+        jTextArea_miarchivo.setColumns(20);
+        jTextArea_miarchivo.setRows(5);
+        jScrollPane1.setViewportView(jTextArea_miarchivo);
+
+        bt_guardar.setText("Guardar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,21 +125,66 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(222, 222, 222))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(222, 222, 222))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(boton_subirArchivo)
+                                    .addComponent(jLabel_titulosubir, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jProgressBar_Llenar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(207, 207, 207)
+                                .addComponent(jLabel_archivotitulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(200, 200, 200)
+                                .addComponent(bt_guardar)))
+                        .addContainerGap(40, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(boton_subirArchivo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_titulo)
+                        .addGap(48, 48, 48)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_titulosubir)
+                .addGap(18, 18, 18)
+                .addComponent(jProgressBar_Llenar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel_archivotitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_guardar)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boton_subirArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_subirArchivoMouseClicked
+        //mibarra
+        boolean terminar = true;
+        adminProgress mibarra = new adminProgress(jProgressBar_Llenar, terminar);
+        mibarra.start();
+        if (mibarra.isSigue() == false) {
+            
+        }
+    }//GEN-LAST:event_boton_subirArchivoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -105,7 +222,20 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_subirArchivo;
+    private javax.swing.JButton bt_guardar;
+    private javax.swing.JLabel jLabel_archivotitulo;
+    private javax.swing.JLabel jLabel_bienvenido;
+    private javax.swing.JLabel jLabel_titulo;
+    private javax.swing.JLabel jLabel_titulofecha;
+    private javax.swing.JLabel jLabel_titulohora;
+    private javax.swing.JLabel jLabel_titulosubir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JProgressBar jProgressBar_Llenar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea_miarchivo;
+    private javax.swing.JLabel label_fecha;
+    private javax.swing.JLabel label_hora;
     // End of variables declaration//GEN-END:variables
 }

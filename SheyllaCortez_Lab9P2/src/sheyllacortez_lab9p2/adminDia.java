@@ -13,7 +13,7 @@ import javax.swing.JLabel;
  *
  * @author DELL
  */
-public class adminDia implements Runnable {
+public class adminDia extends Thread {
 
     private JLabel miHora;
     private JLabel fecha;
@@ -32,7 +32,7 @@ public class adminDia implements Runnable {
             miHora.setText(Tformato.format(tiempo));
             fecha.setText(Hformato.format(tiempo));
             try {
-                Thread.sleep(100);
+                Thread.sleep(20);
             } catch (InterruptedException ex) {
 
             }

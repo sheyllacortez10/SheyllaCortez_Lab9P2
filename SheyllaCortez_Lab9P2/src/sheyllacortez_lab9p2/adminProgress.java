@@ -13,12 +13,11 @@ import javax.swing.JProgressBar;
 public class adminProgress extends Thread{
     private JProgressBar prBar;
     private boolean sigue;
-    private boolean termina;
 
-    public adminProgress(JProgressBar prBar, boolean sigue, boolean termina) {
+
+    public adminProgress(JProgressBar prBar, boolean sigue) {
         this.prBar = prBar;
         this.sigue = sigue;
-        this.termina = termina;
     }
 
     public JProgressBar getPrBar() {
@@ -37,26 +36,24 @@ public class adminProgress extends Thread{
         this.sigue = sigue;
     }
 
-    public boolean isTermina() {
-        return termina;
-    }
 
-    public void setTermina(boolean termina) {
-        this.termina = termina;
-    }
 
     @Override
     public void run() {
-        while (termina) {
-            if (sigue) {
+        while (sigue) {
                 prBar.setValue(prBar.getValue() + 1);
                 prBar.setString(Integer.toString(prBar.getValue()) + " mitiempo");
-            }
+                if (prBar.getValue() == 100) {
+                    sigue = false;
+                }
+
             try {
-                Thread.sleep(700);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
             }
         }
+        
+        //subir archivo
     }
 
 }
