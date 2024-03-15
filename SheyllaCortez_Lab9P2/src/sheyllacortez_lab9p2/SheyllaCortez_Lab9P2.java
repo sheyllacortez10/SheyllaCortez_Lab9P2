@@ -231,6 +231,7 @@ public class SheyllaCortez_Lab9P2 extends javax.swing.JFrame {
             String nuevaInfo = jTextArea_miarchivo.getText();
             bw.write(nuevaInfo);
             bw.flush();
+            jTextArea_miarchivo.setText("");
         } catch (IOException ex) {
             Logger.getLogger(SheyllaCortez_Lab9P2.class.getName()).log(Level.SEVERE, null, ex);
         }
